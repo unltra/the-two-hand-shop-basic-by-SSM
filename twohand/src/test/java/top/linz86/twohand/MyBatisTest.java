@@ -25,7 +25,7 @@ public class MyBatisTest {
 		// 创建Session实例
 		SqlSession session = sqlSessionFactory.openSession();
 		// 创建User对象
-		User user = new User("man3", "31504073", "313");
+		User user = new User("ma", "31504073", "313");
 		// 插入数据
 		session.insert("top.linz86.twohand.mapper.UserMapper.save", user);
 		// 提交事务
