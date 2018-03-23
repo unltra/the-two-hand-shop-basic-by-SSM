@@ -1,9 +1,11 @@
 package top.linz86.twohand;
 
 /**
- * Hello world!
- *
+ * 
+ * @author linz86
+ * @date 2018/3/23
  */
+
 public class App 
 {
     public static void main( String[] args )
