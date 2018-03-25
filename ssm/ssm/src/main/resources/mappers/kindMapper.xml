@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.unltra.ssm.dao.kindMapper" >
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.kind" >
+    <id column="kid" property="kid" jdbcType="INTEGER" />
+    <result column="a_kid" property="aKid" jdbcType="INTEGER" />
+    <result column="kname" property="kname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    kid, a_kid, kname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lp_kind
+    where kid = #{kid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lp_kind
+    where kid = #{kid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.unltra.ssm.domain.kind" >
+    insert into lp_kind (kid, a_kid, kname
+      )
+    values (#{kid,jdbcType=INTEGER}, #{aKid,jdbcType=INTEGER}, #{kname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.kind" >
+    insert into lp_kind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="kid != null" >
+        kid,
+      </if>
+      <if test="aKid != null" >
+        a_kid,
+      </if>
+      <if test="kname != null" >
+        kname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="kid != null" >
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="aKid != null" >
+        #{aKid,jdbcType=INTEGER},
+      </if>
+      <if test="kname != null" >
+        #{kname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.kind" >
+    update lp_kind
+    <set >
+      <if test="aKid != null" >
+        a_kid = #{aKid,jdbcType=INTEGER},
+      </if>
+      <if test="kname != null" >
+        kname = #{kname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where kid = #{kid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.kind" >
+    update lp_kind
+    set a_kid = #{aKid,jdbcType=INTEGER},
+      kname = #{kname,jdbcType=VARCHAR}
+    where kid = #{kid,jdbcType=INTEGER}
+  </update>
+</mapper>

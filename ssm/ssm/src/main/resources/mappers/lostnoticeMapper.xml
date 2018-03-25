@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.unltra.ssm.dao.lostnoticeMapper" >
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.lostnotice" >
+    <id column="lid" property="lid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="kid" property="kid" jdbcType="INTEGER" />
+    <result column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="lname" property="lname" jdbcType="VARCHAR" />
+    <result column="lpic" property="lpic" jdbcType="VARCHAR" />
+    <result column="ldescri" property="ldescri" jdbcType="VARCHAR" />
+    <result column="lplace" property="lplace" jdbcType="VARCHAR" />
+    <result column="ltime" property="ltime" jdbcType="DATE" />
+    <result column="loutstatus" property="loutstatus" jdbcType="INTEGER" />
+    <result column="lcreatetime" property="lcreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lid, uid, kid, aid, lname, lpic, ldescri, lplace, ltime, loutstatus, lcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lp_lostnotice
+    where lid = #{lid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lp_lostnotice
+    where lid = #{lid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.unltra.ssm.domain.lostnotice" >
+    insert into lp_lostnotice (lid, uid, kid, 
+      aid, lname, lpic, ldescri, 
+      lplace, ltime, loutstatus, 
+      lcreatetime)
+    values (#{lid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{kid,jdbcType=INTEGER}, 
+      #{aid,jdbcType=INTEGER}, #{lname,jdbcType=VARCHAR}, #{lpic,jdbcType=VARCHAR}, #{ldescri,jdbcType=VARCHAR}, 
+      #{lplace,jdbcType=VARCHAR}, #{ltime,jdbcType=DATE}, #{loutstatus,jdbcType=INTEGER}, 
+      #{lcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.lostnotice" >
+    insert into lp_lostnotice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        lid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="kid != null" >
+        kid,
+      </if>
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="lname != null" >
+        lname,
+      </if>
+      <if test="lpic != null" >
+        lpic,
+      </if>
+      <if test="ldescri != null" >
+        ldescri,
+      </if>
+      <if test="lplace != null" >
+        lplace,
+      </if>
+      <if test="ltime != null" >
+        ltime,
+      </if>
+      <if test="loutstatus != null" >
+        loutstatus,
+      </if>
+      <if test="lcreatetime != null" >
+        lcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        #{lid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null" >
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="lname != null" >
+        #{lname,jdbcType=VARCHAR},
+      </if>
+      <if test="lpic != null" >
+        #{lpic,jdbcType=VARCHAR},
+      </if>
+      <if test="ldescri != null" >
+        #{ldescri,jdbcType=VARCHAR},
+      </if>
+      <if test="lplace != null" >
+        #{lplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ltime != null" >
+        #{ltime,jdbcType=DATE},
+      </if>
+      <if test="loutstatus != null" >
+        #{loutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="lcreatetime != null" >
+        #{lcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.lostnotice" >
+    update lp_lostnotice
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null" >
+        kid = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null" >
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="lname != null" >
+        lname = #{lname,jdbcType=VARCHAR},
+      </if>
+      <if test="lpic != null" >
+        lpic = #{lpic,jdbcType=VARCHAR},
+      </if>
+      <if test="ldescri != null" >
+        ldescri = #{ldescri,jdbcType=VARCHAR},
+      </if>
+      <if test="lplace != null" >
+        lplace = #{lplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ltime != null" >
+        ltime = #{ltime,jdbcType=DATE},
+      </if>
+      <if test="loutstatus != null" >
+        loutstatus = #{loutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="lcreatetime != null" >
+        lcreatetime = #{lcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where lid = #{lid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.lostnotice" >
+    update lp_lostnotice
+    set uid = #{uid,jdbcType=INTEGER},
+      kid = #{kid,jdbcType=INTEGER},
+      aid = #{aid,jdbcType=INTEGER},
+      lname = #{lname,jdbcType=VARCHAR},
+      lpic = #{lpic,jdbcType=VARCHAR},
+      ldescri = #{ldescri,jdbcType=VARCHAR},
+      lplace = #{lplace,jdbcType=VARCHAR},
+      ltime = #{ltime,jdbcType=DATE},
+      loutstatus = #{loutstatus,jdbcType=INTEGER},
+      lcreatetime = #{lcreatetime,jdbcType=TIMESTAMP}
+    where lid = #{lid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.unltra.ssm.dao.adminMapper" >
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.admin" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="aname" property="aname" jdbcType="VARCHAR" />
+    <result column="apw" property="apw" jdbcType="VARCHAR" />
+    <result column="apower" property="apower" jdbcType="INTEGER" />
+    <result column="atel" property="atel" jdbcType="VARCHAR" />
+    <result column="aphone" property="aphone" jdbcType="VARCHAR" />
+    <result column="aqq" property="aqq" jdbcType="VARCHAR" />
+    <result column="amail" property="amail" jdbcType="VARCHAR" />
+    <result column="acreatetime" property="acreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid, aname, apw, apower, atel, aphone, aqq, amail, acreatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lp_admin
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lp_admin
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.unltra.ssm.domain.admin" >
+    insert into lp_admin (aid, aname, apw, 
+      apower, atel, aphone, 
+      aqq, amail, acreatetime
+      )
+    values (#{aid,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{apw,jdbcType=VARCHAR}, 
+      #{apower,jdbcType=INTEGER}, #{atel,jdbcType=VARCHAR}, #{aphone,jdbcType=VARCHAR}, 
+      #{aqq,jdbcType=VARCHAR}, #{amail,jdbcType=VARCHAR}, #{acreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.admin" >
+    insert into lp_admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="aname != null" >
+        aname,
+      </if>
+      <if test="apw != null" >
+        apw,
+      </if>
+      <if test="apower != null" >
+        apower,
+      </if>
+      <if test="atel != null" >
+        atel,
+      </if>
+      <if test="aphone != null" >
+        aphone,
+      </if>
+      <if test="aqq != null" >
+        aqq,
+      </if>
+      <if test="amail != null" >
+        amail,
+      </if>
+      <if test="acreatetime != null" >
+        acreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apw != null" >
+        #{apw,jdbcType=VARCHAR},
+      </if>
+      <if test="apower != null" >
+        #{apower,jdbcType=INTEGER},
+      </if>
+      <if test="atel != null" >
+        #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aphone != null" >
+        #{aphone,jdbcType=VARCHAR},
+      </if>
+      <if test="aqq != null" >
+        #{aqq,jdbcType=VARCHAR},
+      </if>
+      <if test="amail != null" >
+        #{amail,jdbcType=VARCHAR},
+      </if>
+      <if test="acreatetime != null" >
+        #{acreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.admin" >
+    update lp_admin
+    <set >
+      <if test="aname != null" >
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apw != null" >
+        apw = #{apw,jdbcType=VARCHAR},
+      </if>
+      <if test="apower != null" >
+        apower = #{apower,jdbcType=INTEGER},
+      </if>
+      <if test="atel != null" >
+        atel = #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aphone != null" >
+        aphone = #{aphone,jdbcType=VARCHAR},
+      </if>
+      <if test="aqq != null" >
+        aqq = #{aqq,jdbcType=VARCHAR},
+      </if>
+      <if test="amail != null" >
+        amail = #{amail,jdbcType=VARCHAR},
+      </if>
+      <if test="acreatetime != null" >
+        acreatetime = #{acreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.admin" >
+    update lp_admin
+    set aname = #{aname,jdbcType=VARCHAR},
+      apw = #{apw,jdbcType=VARCHAR},
+      apower = #{apower,jdbcType=INTEGER},
+      atel = #{atel,jdbcType=VARCHAR},
+      aphone = #{aphone,jdbcType=VARCHAR},
+      aqq = #{aqq,jdbcType=VARCHAR},
+      amail = #{amail,jdbcType=VARCHAR},
+      acreatetime = #{acreatetime,jdbcType=TIMESTAMP}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>
