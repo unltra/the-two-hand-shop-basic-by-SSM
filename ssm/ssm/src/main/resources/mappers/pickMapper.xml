@@ -1,36 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="top.unltra.ssm.dao.pickMapper" >
-  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.pick" >
-    <id column="pid" property="pid" jdbcType="INTEGER" />
-    <result column="aid" property="aid" jdbcType="INTEGER" />
-    <result column="kid" property="kid" jdbcType="INTEGER" />
-    <result column="pname" property="pname" jdbcType="VARCHAR" />
-    <result column="ppic" property="ppic" jdbcType="VARCHAR" />
-    <result column="pdescri" property="pdescri" jdbcType="VARCHAR" />
-    <result column="pplace" property="pplace" jdbcType="VARCHAR" />
-    <result column="ptime" property="ptime" jdbcType="DATE" />
-    <result column="ppersoninf" property="ppersoninf" jdbcType="VARCHAR" />
-    <result column="pnowplace" property="pnowplace" jdbcType="VARCHAR" />
-    <result column="poutstatus" property="poutstatus" jdbcType="INTEGER" />
-    <result column="pownstatus" property="pownstatus" jdbcType="INTEGER" />
-    <result column="pcreatetime" property="pcreatetime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.unltra.ssm.dao.pickMapper">
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.pick">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="kid" jdbcType="INTEGER" property="kid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="ppic" jdbcType="VARCHAR" property="ppic" />
+    <result column="pdescri" jdbcType="VARCHAR" property="pdescri" />
+    <result column="pplace" jdbcType="VARCHAR" property="pplace" />
+    <result column="ptime" jdbcType="DATE" property="ptime" />
+    <result column="ppersoninf" jdbcType="VARCHAR" property="ppersoninf" />
+    <result column="pnowplace" jdbcType="VARCHAR" property="pnowplace" />
+    <result column="poutstatus" jdbcType="INTEGER" property="poutstatus" />
+    <result column="pownstatus" jdbcType="INTEGER" property="pownstatus" />
+    <result column="pcreatetime" jdbcType="TIMESTAMP" property="pcreatetime" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     pid, aid, kid, pname, ppic, pdescri, pplace, ptime, ppersoninf, pnowplace, poutstatus, 
     pownstatus, pcreatetime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from lp_pick
     where pid = #{pid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from lp_pick
     where pid = #{pid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="top.unltra.ssm.domain.pick" >
+  <insert id="insert" parameterType="top.unltra.ssm.domain.pick">
     insert into lp_pick (pid, aid, kid, 
       pname, ppic, pdescri, 
       pplace, ptime, ppersoninf, 
@@ -42,134 +42,870 @@
       #{pnowplace,jdbcType=VARCHAR}, #{poutstatus,jdbcType=INTEGER}, #{pownstatus,jdbcType=INTEGER}, 
       #{pcreatetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.pick" >
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.pick">
     insert into lp_pick
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
         pid,
       </if>
-      <if test="aid != null" >
+      <if test="aid != null">
         aid,
       </if>
-      <if test="kid != null" >
+      <if test="kid != null">
         kid,
       </if>
-      <if test="pname != null" >
+      <if test="pname != null">
         pname,
       </if>
-      <if test="ppic != null" >
+      <if test="ppic != null">
         ppic,
       </if>
-      <if test="pdescri != null" >
+      <if test="pdescri != null">
         pdescri,
       </if>
-      <if test="pplace != null" >
+      <if test="pplace != null">
         pplace,
       </if>
-      <if test="ptime != null" >
+      <if test="ptime != null">
         ptime,
       </if>
-      <if test="ppersoninf != null" >
+      <if test="ppersoninf != null">
         ppersoninf,
       </if>
-      <if test="pnowplace != null" >
+      <if test="pnowplace != null">
         pnowplace,
       </if>
-      <if test="poutstatus != null" >
+      <if test="poutstatus != null">
         poutstatus,
       </if>
-      <if test="pownstatus != null" >
+      <if test="pownstatus != null">
         pownstatus,
       </if>
-      <if test="pcreatetime != null" >
+      <if test="pcreatetime != null">
         pcreatetime,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
         #{pid,jdbcType=INTEGER},
       </if>
-      <if test="aid != null" >
+      <if test="aid != null">
         #{aid,jdbcType=INTEGER},
       </if>
-      <if test="kid != null" >
+      <if test="kid != null">
         #{kid,jdbcType=INTEGER},
       </if>
-      <if test="pname != null" >
+      <if test="pname != null">
         #{pname,jdbcType=VARCHAR},
       </if>
-      <if test="ppic != null" >
+      <if test="ppic != null">
         #{ppic,jdbcType=VARCHAR},
       </if>
-      <if test="pdescri != null" >
+      <if test="pdescri != null">
         #{pdescri,jdbcType=VARCHAR},
       </if>
-      <if test="pplace != null" >
+      <if test="pplace != null">
         #{pplace,jdbcType=VARCHAR},
       </if>
-      <if test="ptime != null" >
+      <if test="ptime != null">
         #{ptime,jdbcType=DATE},
       </if>
-      <if test="ppersoninf != null" >
+      <if test="ppersoninf != null">
         #{ppersoninf,jdbcType=VARCHAR},
       </if>
-      <if test="pnowplace != null" >
+      <if test="pnowplace != null">
         #{pnowplace,jdbcType=VARCHAR},
       </if>
-      <if test="poutstatus != null" >
+      <if test="poutstatus != null">
         #{poutstatus,jdbcType=INTEGER},
       </if>
-      <if test="pownstatus != null" >
+      <if test="pownstatus != null">
         #{pownstatus,jdbcType=INTEGER},
       </if>
-      <if test="pcreatetime != null" >
+      <if test="pcreatetime != null">
         #{pcreatetime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.pick" >
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.pick">
     update lp_pick
-    <set >
-      <if test="aid != null" >
+    <set>
+      <if test="aid != null">
         aid = #{aid,jdbcType=INTEGER},
       </if>
-      <if test="kid != null" >
+      <if test="kid != null">
         kid = #{kid,jdbcType=INTEGER},
       </if>
-      <if test="pname != null" >
+      <if test="pname != null">
         pname = #{pname,jdbcType=VARCHAR},
       </if>
-      <if test="ppic != null" >
+      <if test="ppic != null">
         ppic = #{ppic,jdbcType=VARCHAR},
       </if>
-      <if test="pdescri != null" >
+      <if test="pdescri != null">
         pdescri = #{pdescri,jdbcType=VARCHAR},
       </if>
-      <if test="pplace != null" >
+      <if test="pplace != null">
         pplace = #{pplace,jdbcType=VARCHAR},
       </if>
-      <if test="ptime != null" >
+      <if test="ptime != null">
         ptime = #{ptime,jdbcType=DATE},
       </if>
-      <if test="ppersoninf != null" >
+      <if test="ppersoninf != null">
         ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
       </if>
-      <if test="pnowplace != null" >
+      <if test="pnowplace != null">
         pnowplace = #{pnowplace,jdbcType=VARCHAR},
       </if>
-      <if test="poutstatus != null" >
+      <if test="poutstatus != null">
         poutstatus = #{poutstatus,jdbcType=INTEGER},
       </if>
-      <if test="pownstatus != null" >
+      <if test="pownstatus != null">
         pownstatus = #{pownstatus,jdbcType=INTEGER},
       </if>
-      <if test="pcreatetime != null" >
+      <if test="pcreatetime != null">
         pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where pid = #{pid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.pick" >
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    set aid = #{aid,jdbcType=INTEGER},
+      kid = #{kid,jdbcType=INTEGER},
+      pname = #{pname,jdbcType=VARCHAR},
+      ppic = #{ppic,jdbcType=VARCHAR},
+      pdescri = #{pdescri,jdbcType=VARCHAR},
+      pplace = #{pplace,jdbcType=VARCHAR},
+      ptime = #{ptime,jdbcType=DATE},
+      ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      poutstatus = #{poutstatus,jdbcType=INTEGER},
+      pownstatus = #{pownstatus,jdbcType=INTEGER},
+      pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.pick">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="kid" jdbcType="INTEGER" property="kid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="ppic" jdbcType="VARCHAR" property="ppic" />
+    <result column="pdescri" jdbcType="VARCHAR" property="pdescri" />
+    <result column="pplace" jdbcType="VARCHAR" property="pplace" />
+    <result column="ptime" jdbcType="DATE" property="ptime" />
+    <result column="ppersoninf" jdbcType="VARCHAR" property="ppersoninf" />
+    <result column="pnowplace" jdbcType="VARCHAR" property="pnowplace" />
+    <result column="poutstatus" jdbcType="INTEGER" property="poutstatus" />
+    <result column="pownstatus" jdbcType="INTEGER" property="pownstatus" />
+    <result column="pcreatetime" jdbcType="TIMESTAMP" property="pcreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, aid, kid, pname, ppic, pdescri, pplace, ptime, ppersoninf, pnowplace, poutstatus, 
+    pownstatus, pcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick (pid, aid, kid, 
+      pname, ppic, pdescri, 
+      pplace, ptime, ppersoninf, 
+      pnowplace, poutstatus, pownstatus, 
+      pcreatetime)
+    values (#{pid,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{kid,jdbcType=INTEGER}, 
+      #{pname,jdbcType=VARCHAR}, #{ppic,jdbcType=VARCHAR}, #{pdescri,jdbcType=VARCHAR}, 
+      #{pplace,jdbcType=VARCHAR}, #{ptime,jdbcType=DATE}, #{ppersoninf,jdbcType=VARCHAR}, 
+      #{pnowplace,jdbcType=VARCHAR}, #{poutstatus,jdbcType=INTEGER}, #{pownstatus,jdbcType=INTEGER}, 
+      #{pcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="aid != null">
+        aid,
+      </if>
+      <if test="kid != null">
+        kid,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="ppic != null">
+        ppic,
+      </if>
+      <if test="pdescri != null">
+        pdescri,
+      </if>
+      <if test="pplace != null">
+        pplace,
+      </if>
+      <if test="ptime != null">
+        ptime,
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf,
+      </if>
+      <if test="pnowplace != null">
+        pnowplace,
+      </if>
+      <if test="poutstatus != null">
+        poutstatus,
+      </if>
+      <if test="pownstatus != null">
+        pownstatus,
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    <set>
+      <if test="aid != null">
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        kid = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        ppic = #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        pdescri = #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        pplace = #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        ptime = #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        poutstatus = #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        pownstatus = #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    set aid = #{aid,jdbcType=INTEGER},
+      kid = #{kid,jdbcType=INTEGER},
+      pname = #{pname,jdbcType=VARCHAR},
+      ppic = #{ppic,jdbcType=VARCHAR},
+      pdescri = #{pdescri,jdbcType=VARCHAR},
+      pplace = #{pplace,jdbcType=VARCHAR},
+      ptime = #{ptime,jdbcType=DATE},
+      ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      poutstatus = #{poutstatus,jdbcType=INTEGER},
+      pownstatus = #{pownstatus,jdbcType=INTEGER},
+      pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.pick">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="kid" jdbcType="INTEGER" property="kid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="ppic" jdbcType="VARCHAR" property="ppic" />
+    <result column="pdescri" jdbcType="VARCHAR" property="pdescri" />
+    <result column="pplace" jdbcType="VARCHAR" property="pplace" />
+    <result column="ptime" jdbcType="DATE" property="ptime" />
+    <result column="ppersoninf" jdbcType="VARCHAR" property="ppersoninf" />
+    <result column="pnowplace" jdbcType="VARCHAR" property="pnowplace" />
+    <result column="poutstatus" jdbcType="INTEGER" property="poutstatus" />
+    <result column="pownstatus" jdbcType="INTEGER" property="pownstatus" />
+    <result column="pcreatetime" jdbcType="TIMESTAMP" property="pcreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, aid, kid, pname, ppic, pdescri, pplace, ptime, ppersoninf, pnowplace, poutstatus, 
+    pownstatus, pcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick (pid, aid, kid, 
+      pname, ppic, pdescri, 
+      pplace, ptime, ppersoninf, 
+      pnowplace, poutstatus, pownstatus, 
+      pcreatetime)
+    values (#{pid,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{kid,jdbcType=INTEGER}, 
+      #{pname,jdbcType=VARCHAR}, #{ppic,jdbcType=VARCHAR}, #{pdescri,jdbcType=VARCHAR}, 
+      #{pplace,jdbcType=VARCHAR}, #{ptime,jdbcType=DATE}, #{ppersoninf,jdbcType=VARCHAR}, 
+      #{pnowplace,jdbcType=VARCHAR}, #{poutstatus,jdbcType=INTEGER}, #{pownstatus,jdbcType=INTEGER}, 
+      #{pcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="aid != null">
+        aid,
+      </if>
+      <if test="kid != null">
+        kid,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="ppic != null">
+        ppic,
+      </if>
+      <if test="pdescri != null">
+        pdescri,
+      </if>
+      <if test="pplace != null">
+        pplace,
+      </if>
+      <if test="ptime != null">
+        ptime,
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf,
+      </if>
+      <if test="pnowplace != null">
+        pnowplace,
+      </if>
+      <if test="poutstatus != null">
+        poutstatus,
+      </if>
+      <if test="pownstatus != null">
+        pownstatus,
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    <set>
+      <if test="aid != null">
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        kid = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        ppic = #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        pdescri = #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        pplace = #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        ptime = #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        poutstatus = #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        pownstatus = #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    set aid = #{aid,jdbcType=INTEGER},
+      kid = #{kid,jdbcType=INTEGER},
+      pname = #{pname,jdbcType=VARCHAR},
+      ppic = #{ppic,jdbcType=VARCHAR},
+      pdescri = #{pdescri,jdbcType=VARCHAR},
+      pplace = #{pplace,jdbcType=VARCHAR},
+      ptime = #{ptime,jdbcType=DATE},
+      ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      poutstatus = #{poutstatus,jdbcType=INTEGER},
+      pownstatus = #{pownstatus,jdbcType=INTEGER},
+      pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.pick">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="kid" jdbcType="INTEGER" property="kid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="ppic" jdbcType="VARCHAR" property="ppic" />
+    <result column="pdescri" jdbcType="VARCHAR" property="pdescri" />
+    <result column="pplace" jdbcType="VARCHAR" property="pplace" />
+    <result column="ptime" jdbcType="DATE" property="ptime" />
+    <result column="ppersoninf" jdbcType="VARCHAR" property="ppersoninf" />
+    <result column="pnowplace" jdbcType="VARCHAR" property="pnowplace" />
+    <result column="poutstatus" jdbcType="INTEGER" property="poutstatus" />
+    <result column="pownstatus" jdbcType="INTEGER" property="pownstatus" />
+    <result column="pcreatetime" jdbcType="TIMESTAMP" property="pcreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, aid, kid, pname, ppic, pdescri, pplace, ptime, ppersoninf, pnowplace, poutstatus, 
+    pownstatus, pcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick (pid, aid, kid, 
+      pname, ppic, pdescri, 
+      pplace, ptime, ppersoninf, 
+      pnowplace, poutstatus, pownstatus, 
+      pcreatetime)
+    values (#{pid,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{kid,jdbcType=INTEGER}, 
+      #{pname,jdbcType=VARCHAR}, #{ppic,jdbcType=VARCHAR}, #{pdescri,jdbcType=VARCHAR}, 
+      #{pplace,jdbcType=VARCHAR}, #{ptime,jdbcType=DATE}, #{ppersoninf,jdbcType=VARCHAR}, 
+      #{pnowplace,jdbcType=VARCHAR}, #{poutstatus,jdbcType=INTEGER}, #{pownstatus,jdbcType=INTEGER}, 
+      #{pcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="aid != null">
+        aid,
+      </if>
+      <if test="kid != null">
+        kid,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="ppic != null">
+        ppic,
+      </if>
+      <if test="pdescri != null">
+        pdescri,
+      </if>
+      <if test="pplace != null">
+        pplace,
+      </if>
+      <if test="ptime != null">
+        ptime,
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf,
+      </if>
+      <if test="pnowplace != null">
+        pnowplace,
+      </if>
+      <if test="poutstatus != null">
+        poutstatus,
+      </if>
+      <if test="pownstatus != null">
+        pownstatus,
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    <set>
+      <if test="aid != null">
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        kid = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        ppic = #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        pdescri = #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        pplace = #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        ptime = #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        poutstatus = #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        pownstatus = #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    set aid = #{aid,jdbcType=INTEGER},
+      kid = #{kid,jdbcType=INTEGER},
+      pname = #{pname,jdbcType=VARCHAR},
+      ppic = #{ppic,jdbcType=VARCHAR},
+      pdescri = #{pdescri,jdbcType=VARCHAR},
+      pplace = #{pplace,jdbcType=VARCHAR},
+      ptime = #{ptime,jdbcType=DATE},
+      ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      poutstatus = #{poutstatus,jdbcType=INTEGER},
+      pownstatus = #{pownstatus,jdbcType=INTEGER},
+      pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="top.unltra.ssm.domain.pick">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="kid" jdbcType="INTEGER" property="kid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="ppic" jdbcType="VARCHAR" property="ppic" />
+    <result column="pdescri" jdbcType="VARCHAR" property="pdescri" />
+    <result column="pplace" jdbcType="VARCHAR" property="pplace" />
+    <result column="ptime" jdbcType="DATE" property="ptime" />
+    <result column="ppersoninf" jdbcType="VARCHAR" property="ppersoninf" />
+    <result column="pnowplace" jdbcType="VARCHAR" property="pnowplace" />
+    <result column="poutstatus" jdbcType="INTEGER" property="poutstatus" />
+    <result column="pownstatus" jdbcType="INTEGER" property="pownstatus" />
+    <result column="pcreatetime" jdbcType="TIMESTAMP" property="pcreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, aid, kid, pname, ppic, pdescri, pplace, ptime, ppersoninf, pnowplace, poutstatus, 
+    pownstatus, pcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lp_pick
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick (pid, aid, kid, 
+      pname, ppic, pdescri, 
+      pplace, ptime, ppersoninf, 
+      pnowplace, poutstatus, pownstatus, 
+      pcreatetime)
+    values (#{pid,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{kid,jdbcType=INTEGER}, 
+      #{pname,jdbcType=VARCHAR}, #{ppic,jdbcType=VARCHAR}, #{pdescri,jdbcType=VARCHAR}, 
+      #{pplace,jdbcType=VARCHAR}, #{ptime,jdbcType=DATE}, #{ppersoninf,jdbcType=VARCHAR}, 
+      #{pnowplace,jdbcType=VARCHAR}, #{poutstatus,jdbcType=INTEGER}, #{pownstatus,jdbcType=INTEGER}, 
+      #{pcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.unltra.ssm.domain.pick">
+    insert into lp_pick
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="aid != null">
+        aid,
+      </if>
+      <if test="kid != null">
+        kid,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="ppic != null">
+        ppic,
+      </if>
+      <if test="pdescri != null">
+        pdescri,
+      </if>
+      <if test="pplace != null">
+        pplace,
+      </if>
+      <if test="ptime != null">
+        ptime,
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf,
+      </if>
+      <if test="pnowplace != null">
+        pnowplace,
+      </if>
+      <if test="poutstatus != null">
+        poutstatus,
+      </if>
+      <if test="pownstatus != null">
+        pownstatus,
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.unltra.ssm.domain.pick">
+    update lp_pick
+    <set>
+      <if test="aid != null">
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        kid = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ppic != null">
+        ppic = #{ppic,jdbcType=VARCHAR},
+      </if>
+      <if test="pdescri != null">
+        pdescri = #{pdescri,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null">
+        pplace = #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null">
+        ptime = #{ptime,jdbcType=DATE},
+      </if>
+      <if test="ppersoninf != null">
+        ppersoninf = #{ppersoninf,jdbcType=VARCHAR},
+      </if>
+      <if test="pnowplace != null">
+        pnowplace = #{pnowplace,jdbcType=VARCHAR},
+      </if>
+      <if test="poutstatus != null">
+        poutstatus = #{poutstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pownstatus != null">
+        pownstatus = #{pownstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pcreatetime != null">
+        pcreatetime = #{pcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.unltra.ssm.domain.pick">
     update lp_pick
     set aid = #{aid,jdbcType=INTEGER},
       kid = #{kid,jdbcType=INTEGER},
